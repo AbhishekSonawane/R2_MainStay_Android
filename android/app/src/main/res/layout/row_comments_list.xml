@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/commentlinlay"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:id="@+id/postlinlay"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:paddingBottom="5dp"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.8"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:paddingTop="7dp"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txttitle"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/post_title"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textSize="@dimen/post_time"
+                    android:id="@+id/txtdate" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imgbookmark"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:src="@drawable/btn_bookmark_unfilled" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtpostdescription"
+            android:autoLink="web"
+            android:textColor="@color/bodytextcolor"
+            android:textSize="@dimen/post_desc"
+            android:padding="7dp"
+            android:visibility="gone"/>
+
+        <WebView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:id="@+id/webview"
+            tools:ignore="WebViewLayout" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/default_post_image"
+            android:id="@+id/post_image" />
+
+
+        <com.google.android.youtube.player.YouTubeThumbnailView
+            android:id="@+id/youtube_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout_over_youtube_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:background="@android:color/transparent"
+            android:visibility="gone">
+
+
+            <ImageView
+                android:id="@+id/img_thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/btnYoutube_player"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                android:src="@drawable/play_button" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="4dp"
+            android:weightSum="2">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_height="wrap_content"
+                android:id="@+id/imglike"
+                android:layout_gravity="center"
+                android:padding="3dp"
+                android:src="@drawable/btn_like_unfilled" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="0"
+                android:layout_marginRight="10dp"
+                android:id="@+id/txtlike_count" />
+
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:padding="3dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/btn_comment_unfilled"
+                android:id="@+id/imgcomments" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center"
+                android:id="@+id/txtcommentscount" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:layout_gravity="center"
+                android:id="@+id/imgshare"
+                android:padding="3dp"
+                android:src="@drawable/btn_share" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:paddingBottom="3dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:paddingRight="10dp">
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:id="@+id/linlaycomment"
+                android:weightSum="1">
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/comment_user_img"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.1"
+                    android:layout_height="30dp"
+                    app:civ_border="false"
+                    app:civ_shadow="false" />
+
+                <TextView
+                    android:id="@+id/txtstudent_name"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.8"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/comment_text"
+                android:textColor="@android:color/black"
+                android:layout_width="match_parent"
+                android:paddingRight="10dp"
+                android:textSize="@dimen/post_desc"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:id="@+id/commentdivider"
+                android:background="#EEEEEE"></View>
+
+            <TextView
+                android:id="@+id/comment_created_at"
+                android:textColor="@android:color/darker_gray"
+                android:layout_width="match_parent"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:paddingBottom="2dp"
+                android:layout_marginTop="5dp"
+                android:textSize="12dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.android.main_stay.Classes.TakeApplication"
+    tools:showIn="@layout/activity_take_application">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="50dp">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:padding="20dp"
+            >
+            <TextView
+                android:id="@+id/topictextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Topic Name"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/topictexEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:editable="false"
+                android:background="@drawable/rounded_edittext"
+
+                android:singleLine="false"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimary"
+                android:inputType="none">
+
+            </EditText>
+
+
+
+
+
+            <TextView
+                android:id="@+id/topicdesctextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Topic Description"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            <EditText
+                android:id="@+id/topicdescEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:editable="false"
+                android:background="@drawable/rounded_edittext"
+                android:singleLine="false"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimary"
+                android:inputType="none">
+
+            </EditText>
+
+
+
+
+
+
+
+            <TextView
+                android:id="@+id/wheretextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Instance where applied?"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            <EditText
+                android:id="@+id/wheretexEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:background="@drawable/rounded_edittext"
+                android:singleLine="false"
+                android:textColor="@color/colorPrimary"
+                android:padding="10dp">
+
+            </EditText>
+            <TextView
+                android:id="@+id/datetextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="Date applied"
+                android:textStyle="bold"
+                android:inputType="date"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/datetexTextView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:background="@drawable/rounded_edittext"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimary"
+                android:singleLine="false" >
+            </TextView>
+            <TextView
+                android:id="@+id/effecttextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="What was the effect?"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            <EditText
+                android:id="@+id/effecttexEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:background="@drawable/rounded_edittext"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimary"
+                android:singleLine="false" >
+            </EditText>
+            <TextView
+                android:id="@+id/welltextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="What went well?"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            <EditText
+                android:id="@+id/welltexEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/rounded_edittext"
+                android:singleLine="false" >
+            </EditText>
+            <TextView
+                android:id="@+id/notExpectedtextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="What did not go as expected?"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            <EditText
+                android:id="@+id/notExpectedEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/rounded_edittext"
+                android:singleLine="false" >
+            </EditText>
+            <TextView
+                android:id="@+id/reflectiontextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Reflection"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            <EditText
+                android:id="@+id/reflectionEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/rounded_edittext"
+                android:singleLine="false" >
+            </EditText>
+            <TextView
+                android:id="@+id/dodifferentlytextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="What will I do differently next time?"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/dodifferentEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/rounded_edittext"
+                android:singleLine="false" >
+
+            </EditText>
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
