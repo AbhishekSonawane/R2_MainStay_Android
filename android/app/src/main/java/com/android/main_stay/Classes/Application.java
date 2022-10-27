@@ -126,7 +126,6 @@ public class Application extends AppCompatActivity {
                     if (jsonobj.getString("status").equals("success")) {
                         jarray = jsonobj.getJSONArray("data");
 
-
                         if (jarray.length() > 0) {
                             Type type = new TypeToken<ArrayList<ApplicationModel>>() {
                             }.getType();

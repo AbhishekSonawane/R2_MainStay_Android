@@ -345,7 +345,7 @@ public class Login extends AppCompatActivity {
         super.onResume();
         Log.d("NonStop","In Login onResume");
 
-     // new RegisterForPushNotificationsAsync().execute();
+      new RegisterForPushNotificationsAsync().execute();
     }
 
 

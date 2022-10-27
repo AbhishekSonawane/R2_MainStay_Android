@@ -97,6 +97,7 @@ public class TakeApplication extends AppCompatActivity {
         different = findViewById(R.id.dodifferentEditText);
         topicTitle = findViewById(R.id.topictexEditText);
         topicDesc = findViewById(R.id.topicdescEditText);
+
         topicTitle.setText(getIntent().getStringExtra("ApplicationTopicName"));
         topicDesc.setText(getIntent().getStringExtra("ApplicationTopicDescription"));
        // topicTitle.setBackgroundColor(Color.LTGRAY);
@@ -144,6 +145,10 @@ public class TakeApplication extends AppCompatActivity {
 
             topicTitle.setFocusable(false);
             topicTitle.setClickable(false);
+
+            topicDesc.setFocusable(false);
+            topicDesc.setClickable(false);
+
             topicDate.setEnabled(false);
             topicDate.setClickable(false);
             instWhere.setEnabled(false);
@@ -164,6 +169,8 @@ public class TakeApplication extends AppCompatActivity {
             totalSore.setVisibility(View.GONE);
 
             topicTitle.setClickable(true);
+            topicDesc.setClickable(true);
+
             topicDate.setEnabled(true);
             topicDate.setClickable(true);
             instWhere.setEnabled(true);

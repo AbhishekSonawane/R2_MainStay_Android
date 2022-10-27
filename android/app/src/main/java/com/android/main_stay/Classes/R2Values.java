@@ -7,7 +7,7 @@ package com.android.main_stay.Classes;
 public class R2Values {
 
     public static class Commons {
-        public static String TOKEN ="token" ;
+        public static String TOKEN ="device_token" ;
         public static String EMAIL = "email";
         public static String PASSWORD = "password";
         public static String ISUSER_LOGGEDIN = "user_loggedin";
@@ -18,7 +18,8 @@ public class R2Values {
     public static class Web {
 
        // public static String BASE_URL1 = "http://192.168.1.9:1212/";
-        public static String BASE_URL = " http://3.225.180.208:8080/";
+      //  public static String BASE_URL = "https://3f91-103-35-134-125.in.ngrok.io/";
+        public static String BASE_URL = "http://3.225.180.208:8080/";
       //  public static String BASE_URL = "https://0570-103-35-134-125.in.ngrok.io/" +
               //  "";
 

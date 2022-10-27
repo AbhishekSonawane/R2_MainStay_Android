@@ -57,6 +57,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
+
             <EditText
                 android:id="@+id/topicdescEditText"
                 android:layout_width="fill_parent"

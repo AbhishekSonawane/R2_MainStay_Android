@@ -231,6 +231,7 @@
                         android:src="@drawable/boost_expert_quiz"/>
 
                     <TextView
+                        android:id="@+id/goToexpertquiz"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="18dp"

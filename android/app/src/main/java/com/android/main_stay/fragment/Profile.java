@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.main_stay.Classes.Leaderboard;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkError;
@@ -61,7 +62,7 @@ public class Profile extends Fragment {
     private Gson gson;
     private PreferenceHelper mPreferenceHelper;
     private View view;
-    private LinearLayout linlayedtpersonaldetails, linlaybookmarkslist, linlaymybatch, linlaylogout,linlayabout;
+    private LinearLayout linlayedtpersonaldetails, linlaybookmarkslist, linlaymybatch, linlaylogout,linlayabout,linlayresults;
     private TextView student_name, txtbookmarkcount;
     private ImageView img_background, uploadprofilepic;
     private ProgressDialog pd;
@@ -95,8 +96,19 @@ public class Profile extends Fragment {
         txtbookmarkcount = view.findViewById(R.id.txtbookmarkcount);
         linlaylogout = view.findViewById(R.id.linlaylogout);
         linlayabout = view.findViewById(R.id.linlayabout);
+        linlayresults= view.findViewById(R.id.linlayresults);
         pd.show();
         GetProfileInfo();
+
+
+        linlayresults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Leaderboard.class);
+                startActivity(intent);
+            }
+        });
+
 
         linlayedtpersonaldetails.setOnClickListener(new View.OnClickListener() {
             @Override

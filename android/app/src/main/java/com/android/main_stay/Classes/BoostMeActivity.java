@@ -106,6 +106,15 @@ public class BoostMeActivity extends AppCompatActivity {
                 finish();
             }
         });
+        TextView btn4= findViewById(R.id.goToexpertquiz);
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("","Go To Expert Quiz");
+                TabActivity.mViewPager.setCurrentItem(2);
+                finish();
+            }
+        });
 
     }
 

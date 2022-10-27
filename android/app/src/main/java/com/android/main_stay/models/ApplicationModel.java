@@ -10,7 +10,7 @@ public class ApplicationModel {
     private String status;
     private String title;
     private String created_at;
-    private String topic_desc;
+    private String topic_description;
 
     public String getTopic_id() {
         return topic_id;
@@ -53,11 +53,11 @@ public class ApplicationModel {
     }
 
     public String getTopic_desc() {
-        return topic_desc;
+        return topic_description;
     }
 
     public void setTopic_desc(String topic_desc) {
-        this.topic_desc = topic_desc;
+        this.topic_description = topic_desc;
     }
 }
 

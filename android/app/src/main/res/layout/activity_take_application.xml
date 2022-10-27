@@ -32,9 +32,9 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_take_application" />
-
     <!-- TODO: write code for button -->
+
+    <include layout="@layout/content_take_application" />
 
     <Button
         android:layout_width="match_parent"
