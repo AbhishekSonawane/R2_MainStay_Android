@@ -174,8 +174,8 @@ public class R2Values {
             public static String DATA = "data";
         }
 
-        public static class GetBadgeList {
-            public static String SERVICE_URL = BASE_URL + "get_badge_list/";
+        public static class GetStudentBadges {
+            public static String SERVICE_URL = BASE_URL + "get_student_badges/";
             public static String DATA = "data";
         }
 

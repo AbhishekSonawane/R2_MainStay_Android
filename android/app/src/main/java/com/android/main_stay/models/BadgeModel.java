@@ -6,18 +6,18 @@ package com.android.main_stay.models;
 
 public class BadgeModel {
 
-  //  private String id;
+    private String id;
     private String desc;
-    private Integer image;
+    private String image;
     private String name;
 
-  /*  public String getId() {
+    public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
-    }*/
+    }
 
     public String getDesc() {
         return desc;
@@ -27,11 +27,11 @@ public class BadgeModel {
         this.desc = desc;
     }
 
-    public Integer getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Integer image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

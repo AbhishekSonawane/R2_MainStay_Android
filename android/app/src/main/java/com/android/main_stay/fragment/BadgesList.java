@@ -13,16 +13,37 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.android.main_stay.Classes.App;
+import com.android.main_stay.Classes.R2Values;
+import com.android.main_stay.models.LoginModel;
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.android.main_stay.R;
 import com.android.main_stay.adapter.BadgesListAdapter;
 import com.android.main_stay.models.BadgeModel;
 import com.android.main_stay.utils.PreferenceHelper;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+
+import es.dmoral.toasty.Toasty;
 
 
 public class BadgesList extends Fragment {
@@ -34,6 +55,7 @@ public class BadgesList extends Fragment {
     private JSONArray jarray;
     private Gson gson;
     private PreferenceHelper mPreferenceHelper;
+    private ArrayList<BadgeModel> BadgesList = new ArrayList<>();
     private RecyclerView recyclerView;
     private BadgesListAdapter mAdapter;
     public static Context mContext;
@@ -76,19 +98,19 @@ public class BadgesList extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         swipeContainer = view.findViewById(R.id.swipeContainer);
 
-        GetStudentBadgeList();
+       // GetStudentBadgeList();
 
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
 
-                //GetStudentBadgesList();
-                GetStudentBadgeList();
+                GetStudentBadgesList();
+              //  GetStudentBadgeList();
             }
         });
 
         pd.show();
-     //   GetStudentBadgesList();
+       GetStudentBadgesList();
 
         Log.d("","$$ in Badges List $$");
 
@@ -96,7 +118,7 @@ public class BadgesList extends Fragment {
     }
 
 
-   /* public void GetStudentBadgesList() {
+    public void GetStudentBadgesList() {
 
         LoginModel loginModel = new LoginModel();
 
@@ -105,7 +127,7 @@ public class BadgesList extends Fragment {
 
         String dataString = gson.toJson(loginModel, LoginModel.class);
 
-        JSONObject  jsonObject = new JSONObject();
+        JSONObject jsonObject = new JSONObject();
         JSONObject dataStringnew = null;
 
         try {
@@ -115,7 +137,7 @@ public class BadgesList extends Fragment {
             e.printStackTrace();
         }
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,R2Values.Web.GetBadgeList.SERVICE_URL,jsonObject, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,R2Values.Web.GetStudentBadges.SERVICE_URL,jsonObject, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
@@ -127,7 +149,7 @@ public class BadgesList extends Fragment {
 
                 try {
 
-                    JSONObject jsonobj = response.getJSONObject("get_badge_list");
+                    JSONObject jsonobj = response.getJSONObject("get_student_badges");
                     if (jsonobj.getString("status").equals("success")) {
                         jarray = jsonobj.getJSONArray("badge_list");
 
@@ -176,56 +198,6 @@ public class BadgesList extends Fragment {
 
         App.getInstance().addToRequestQueue(request, "GetStudentBadgesList");
         request.setRetryPolicy(new DefaultRetryPolicy(20 * 1000, 1, 1.0f));
-    }*/
-
-
-    public void GetStudentBadgeList(){
-
-        ArrayList<BadgeModel> list= new ArrayList<BadgeModel>();
-
-        BadgeModel badgeModel = new BadgeModel();
-        badgeModel.setName("master mind");
-        badgeModel.setDesc("completed 1 quiz");
-        badgeModel.setImage(R.drawable.trophy_1);
-        list.add(badgeModel);
-
-
-        BadgeModel badgeModel1 = new BadgeModel();
-        badgeModel1.setName("Quick Learner");
-        badgeModel1.setDesc("Got first leaderboard");
-        badgeModel1.setImage(R.drawable.trophy_2);
-        list.add(badgeModel1);
-
-        BadgeModel badgeModel2 = new BadgeModel();
-        badgeModel2.setName("Super Learner");
-        badgeModel2.setDesc("completed more than five quizes");
-        badgeModel2.setImage(R.drawable.trophy_3);
-        list.add(badgeModel2);
-
-        BadgeModel badgeModel3 = new BadgeModel();
-        badgeModel3.setName("The Achievwer");
-        badgeModel3.setDesc("Ranked number 1");
-        badgeModel3.setImage(R.drawable.trophy_4);
-        list.add(badgeModel3);
-
-        BadgeModel badgeModel4 =  new BadgeModel();
-        badgeModel4.setName("Locked batch");
-        badgeModel4.setDesc("unlock to see the details");
-        badgeModel4.setImage(R.drawable.trophy_locked);
-        list.add(badgeModel4);
-
-
-
-
-
-        mAdapter = new BadgesListAdapter(list,getActivity());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
-
-        swipeContainer.setRefreshing(false);
-
     }
 
 }

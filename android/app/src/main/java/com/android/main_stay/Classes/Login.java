@@ -347,6 +347,4 @@ public class Login extends AppCompatActivity {
 
       new RegisterForPushNotificationsAsync().execute();
     }
-
-
 }

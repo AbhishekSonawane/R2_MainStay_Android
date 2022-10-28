@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.main_stay.Classes.App;
+import com.android.main_stay.Classes.R2Values;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.main_stay.R;
 import com.android.main_stay.models.BadgeModel ;
@@ -49,10 +51,7 @@ public class BadgesListAdapter extends RecyclerView.Adapter<BadgesListAdapter.Vi
             holder.txtScore.setText(BadgeModel.getDesc());
 
         if (BadgeModel.getImage() != null)
-            holder.user_img.setDefaultImageResId(BadgeModel.getImage());
-
-
-       // holder.user_img.setImageUrl(R2Values.Web.BASE_URL + BadgeModel.getImage() , App.getInstance().getImageLoader());
+            holder.user_img.setImageUrl(R2Values.Web.BASE_URL + "media/"+BadgeModel.getImage() , App.getInstance().getImageLoader());
 
     }
 
