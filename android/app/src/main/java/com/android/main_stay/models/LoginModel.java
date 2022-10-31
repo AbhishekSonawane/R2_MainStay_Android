@@ -14,7 +14,7 @@ public class LoginModel {
     private String page_no;
     private String os_version;
     private String app_version;
-    private String quiz_id, device_token, ass_id;
+    private String quiz_id,device_token, ass_id;
     private String post_id;
 
     public String getEmail() {

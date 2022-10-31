@@ -18,9 +18,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -47,16 +53,16 @@ public class Login extends AppCompatActivity {
     private EditText txtemail, txtpassword;
     private FirebaseAnalytics mFirebaseAnalytics;
     ProgressDialog pd;
-    private TextView txttandc,txtforgotpassword;
-    private String uGoogRegId="";
+    private TextView txttandc, txtforgotpassword;
+    private String uGoogRegId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-      String  PACKAGE_NAME = getApplicationContext().getPackageName();
-      Log.e("packaqe name",PACKAGE_NAME);
+        String PACKAGE_NAME = getApplicationContext().getPackageName();
+        Log.e("packaqe name", PACKAGE_NAME);
 
 
         init();
@@ -131,15 +137,15 @@ public class Login extends AppCompatActivity {
 
         String dataString = gson.toJson(loginModel);
 
-        JSONObject  jsonObject = new JSONObject();
+        JSONObject jsonObject = new JSONObject();
         JSONObject dataStringnew = null;
         try {
             dataStringnew = new JSONObject(dataString);
-            jsonObject.put("data",dataStringnew);
+            jsonObject.put("data", dataStringnew);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-   //  final String requestBody  = jsonObject.toString();
+        //  final String requestBody  = jsonObject.toString();
 
 //        final String requestBody = "{\n" +
 //                "    \"data\": {\n" +
@@ -160,14 +166,18 @@ public class Login extends AppCompatActivity {
 //        }
 //
 
-        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST,R2Values.Web.LoginService.SERVICE_URL ,jsonObject, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, R2Values.Web.LoginService.SERVICE_URL, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("Response", ""+response);
+                Log.d("Response", "" + response);
 
                 if (pd != null && pd.isShowing())
-                    pd.dismiss();
+                    if (pd != null && pd.isShowing())
+                        try {
+                            pd.dismiss();
+                        } catch (Exception e) {
 
+                        }
                 try {
 
                     JSONObject jsonobj = response.getJSONObject("login");
@@ -198,92 +208,37 @@ public class Login extends AppCompatActivity {
             }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("Error", error.getMessage());
+            public void onErrorResponse(VolleyError volleyError) {
+                try {
+                    Log.e("Error", volleyError.getMessage());
+                }catch (Exception e){
+
+                }
+
+
+                if (pd != null && pd.isShowing());
+                   pd.dismiss();
+
+                String message = null;
+                if (volleyError instanceof NetworkError) {
+                    message = getResources().getString(R.string.internet_connection_error);
+                } else if (volleyError instanceof ServerError) {
+                   message = "The server could not be found. Please try again after some time!!";
+                }else if (volleyError instanceof AuthFailureError) {
+                   message = getResources().getString(R.string.internet_connection_error);
+                } else if (volleyError instanceof ParseError) {
+                    message = "Parsing error! Please try again after some time!!";
+                } else if (volleyError instanceof NoConnectionError) {
+                    message = getResources().getString(R.string.internet_connection_error);
+                } else if (volleyError instanceof TimeoutError) {
+                    message = "Connection TimeOut! Please check your internet connection.";
+                }
+                Toasty.warning(Login.this, message, Toast.LENGTH_SHORT).show();
 
 
             }
-        }) ;
+        });
 
-
-
-//        StringRequest request = new StringRequest(Request.Method.POST, R2Values.Web.LoginService.SERVICE_URL, new Response.Listener<String>() {
-//
-//            @Override
-//            public void onResponse(String response) {
-//                Log.d("Nonstop", "response  ---------------" + response);
-//
-//                if (pd != null && pd.isShowing())
-//                    pd.dismiss();
-//
-//                try {
-//
-//                    JSONObject obj = new JSONObject(response);
-//
-//                    JSONObject jsonobj = obj.getJSONObject("login");
-//
-//                    if (jsonobj.getString("status").equals("fail")) {
-//                        Toasty.error(Login.this, jsonobj.getString("message"), Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                    if (jsonobj.getString("status").equals("success")) {
-//
-//                        JSONObject dataobj = jsonobj.getJSONObject("data");
-//
-//                        mPreferenceHelper.addBoolean(R2Values.Commons.ISUSER_LOGGEDIN, true);
-//                        mPreferenceHelper.addString(R2Values.Commons.EMAIL, txtemail.getText().toString().trim());
-//                        mPreferenceHelper.addString(R2Values.Commons.PASSWORD, txtpassword.getText().toString().trim());
-//                        mPreferenceHelper.addString(R2Values.Commons.STUDENT_ID, dataobj.getString("student_id"));
-//
-//                        Intent intent = new Intent(Login.this, TabActivity.class);
-//                        startActivity(intent);
-//                        finish();
-//                    }
-//
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//
-//            @Override
-//            public void onErrorResponse(VolleyError volleyError) {
-//
-//                if (pd != null && pd.isShowing())
-//                    pd.dismiss();
-//
-//                String message = null;
-//                if (volleyError instanceof NetworkError) {
-//                    message = getResources().getString(R.string.internet_connection_error);
-//                } else if (volleyError instanceof ServerError) {
-//                    message = "The server could not be found. Please try again after some time!!";
-//                } else if (volleyError instanceof AuthFailureError) {
-//                    message = getResources().getString(R.string.internet_connection_error);
-//                } else if (volleyError instanceof ParseError) {
-//                    message = "Parsing error! Please try again after some time!!";
-//                } else if (volleyError instanceof NoConnectionError) {
-//                    message = getResources().getString(R.string.internet_connection_error);
-//                } else if (volleyError instanceof TimeoutError) {
-//                    message = "Connection TimeOut! Please check your internet connection.";
-//                }
-//                Toasty.warning(Login.this, message, Toast.LENGTH_SHORT).show();
-//            }
-//        })
-//        {
-//            @Override        public String getBodyContentType() {
-//            return "application/json";
-//        }
-//
-//
-//            @Override        protected Response<String> parseNetworkResponse(NetworkResponse response) {
-//            String responseString = "";
-//            if (response != null) {
-//                responseString = String.valueOf(response.data);
-//                // can get more details such as response.headers
-//            }
-//            return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
-//        }
-//        };
         App.getInstance().addToRequestQueue(request, "Login");
         request.setRetryPolicy(new DefaultRetryPolicy(20 * 1000, 1, 1.0f));
     }
@@ -316,7 +271,7 @@ public class Login extends AppCompatActivity {
         return currentVersion;
     }
 
-   private class RegisterForPushNotificationsAsync extends AsyncTask<Void, Void, Void> {
+    private class RegisterForPushNotificationsAsync extends AsyncTask<Void, Void, Void> {
         protected Void doInBackground(Void... params) {
             try {
                 // Register the device for notifications
@@ -343,8 +298,10 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("NonStop","In Login onResume");
+        Log.d("NonStop", "In Login onResume");
 
-      new RegisterForPushNotificationsAsync().execute();
+        new RegisterForPushNotificationsAsync().execute();
     }
+
+
 }
