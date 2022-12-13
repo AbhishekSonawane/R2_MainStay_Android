@@ -1,13 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.android.main_stay.Classes.SplashScreen"
-    android:background="@drawable/new_splash_screen">
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    >
 
-    <include layout="@layout/content_splash_screen" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Meliora"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="55dp"
+        android:textColor="#3C445F"
+        android:fontFamily="@font/poppins"
+        android:layout_marginTop="100dp"
+        />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="by"
+        android:gravity="center"
+        android:textColor="#3C445F"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textSize="32sp"
+        android:fontFamily="@font/poppins"
+        android:layout_marginTop="10dp"
+        />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_splash_screen"
+        tools:context="com.android.main_stay.Classes.SplashScreen">
+        <include layout="@layout/content_splash_screen" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.android.main_stay;
+package com.android.erudito;
 
 import org.junit.Test;
 

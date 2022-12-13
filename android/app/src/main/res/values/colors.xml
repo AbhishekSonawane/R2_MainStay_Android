@@ -9,4 +9,6 @@
     <color name="black">#000000</color>
     <color name="divider_color">#9e9e9e</color>
     <color name="gifBlue">#63adc7</color>
+    <color name="gifBluefaint">#049BFA</color>
+
 </resources>

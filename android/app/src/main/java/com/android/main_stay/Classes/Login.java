@@ -56,6 +56,7 @@ public class Login extends AppCompatActivity {
     private TextView txttandc, txtforgotpassword;
     private String uGoogRegId = "";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,8 +106,8 @@ public class Login extends AppCompatActivity {
 
                 String uriText =
                         "mailto:rajiv@rsquareconsult.in" +
-                                "?subject=" + Uri.encode("Regarding NexoR2 App - forgot password") +
-                                "&body=" + Uri.encode("Hi, I want to use the NexoR2 app, but I have forgotten my password. Kindly send me password.");
+                                "?subject=" + Uri.encode("Regarding Main Stay App - forgot password") +
+                                "&body=" + Uri.encode("Hi, I want to use the Main Stay app, but I have forgotten my password. Kindly send me password.");
 
                 Uri uri = Uri.parse(uriText);
 
