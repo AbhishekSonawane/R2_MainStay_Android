@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:name="com.android.main_stay.Classes.App"
+        android:name="com.erudito.main_stay.Classes.App"
         android:allowBackup="true"
         android:icon="@drawable/ic_app_icon"
         android:label="@string/app_name"
@@ -26,7 +26,7 @@
         <!-- Pushy Notification Receiver -->
         <!-- Incoming push notifications will invoke the following BroadcastReceiver -->
         <receiver
-            android:name="com.android.main_stay.receiver.PushReceiver"
+            android:name="com.erudito.main_stay.receiver.PushReceiver"
             android:exported="false">
             <intent-filter>
 
@@ -64,17 +64,17 @@
         <!-- End Pushy Declarations -->
 
         <activity
-            android:name="com.android.main_stay.Classes.Login"
+            android:name="com.erudito.main_stay.Classes.Login"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.android.main_stay.Classes.TabActivity"
+            android:name="com.erudito.main_stay.Classes.TabActivity"
             android:label="@string/title_activity_tab"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.android.main_stay.Classes.SplashScreen"
+            android:name="com.erudito.main_stay.Classes.SplashScreen"
             android:label="@string/title_activity_splash_screen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Transparent"
