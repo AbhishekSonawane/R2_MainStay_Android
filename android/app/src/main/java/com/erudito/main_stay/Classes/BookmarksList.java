@@ -3,6 +3,10 @@ package com.erudito.main_stay.Classes;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,11 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.util.Log;
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
-
+import com.android.main_stay.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkError;
@@ -27,14 +27,13 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.erudito.main_stay.adapter.BookmarksListAdapter;
 import com.erudito.main_stay.models.FeedsModel;
 import com.erudito.main_stay.models.LoginModel;
 import com.erudito.main_stay.utils.PreferenceHelper;
 import com.erudito.main_stay.utils.WebUtil;
-import com.android.main_stay.R;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;

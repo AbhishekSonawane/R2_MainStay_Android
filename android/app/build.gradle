@@ -7,11 +7,11 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.android.main_stay"
+        applicationId "com.erudito.main_stay"
         minSdkVersion 26
         targetSdkVersion 33
-        versionCode 3
-        versionName "1.0"
+        versionCode 6
+        versionName "1.2"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         multiDexEnabled true
     }

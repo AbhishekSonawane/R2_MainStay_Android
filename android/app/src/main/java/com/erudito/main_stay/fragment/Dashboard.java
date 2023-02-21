@@ -1,5 +1,7 @@
 package com.erudito.main_stay.fragment;
 
+import static com.erudito.main_stay.Classes.MainFragment.mTabHost;
+
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -7,12 +9,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,6 +20,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+
+import com.android.main_stay.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkError;
@@ -35,17 +37,15 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.erudito.main_stay.Classes.Application;
-import com.erudito.main_stay.Classes.R2Values;
-import com.google.gson.Gson;
-import com.erudito.main_stay.BuildConfig;
 import com.erudito.main_stay.Classes.App;
+import com.erudito.main_stay.Classes.Application;
 import com.erudito.main_stay.Classes.BoostMeGifActivity;
-import com.erudito.main_stay.Classes.TabActivity;
 import com.erudito.main_stay.Classes.Leaderboard;
-import com.android.main_stay.R;
+import com.erudito.main_stay.Classes.R2Values;
+import com.erudito.main_stay.Classes.TabActivity;
 import com.erudito.main_stay.models.LoginModel;
 import com.erudito.main_stay.utils.PreferenceHelper;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,10 +53,9 @@ import org.json.JSONObject;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import es.dmoral.toasty.BuildConfig;
 import es.dmoral.toasty.Toasty;
 import me.pushy.sdk.Pushy;
-
-import static com.erudito.main_stay.Classes.MainFragment.mTabHost;
 
 /**
  * A simple {@link Fragment} subclass.

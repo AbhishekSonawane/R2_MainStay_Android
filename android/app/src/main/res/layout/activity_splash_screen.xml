@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Meliora"
+        android:text="Erudito"
         android:gravity="center"
         android:layout_gravity="center"
         android:textStyle="bold"
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/ic_splash_screen"
-        tools:context="com.android.main_stay.Classes.SplashScreen">
+        tools:context="com.android.main_stay.com.erudito.main_stay.Classes.SplashScreen">
         <include layout="@layout/content_splash_screen" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

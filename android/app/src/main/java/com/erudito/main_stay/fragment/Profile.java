@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.erudito.main_stay.Classes.Leaderboard;
+import androidx.fragment.app.Fragment;
+
+import com.android.main_stay.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkError;
@@ -28,25 +28,25 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.gson.Gson;
-import com.erudito.main_stay.BuildConfig;
 import com.erudito.main_stay.Classes.App;
 import com.erudito.main_stay.Classes.BookmarksList;
 import com.erudito.main_stay.Classes.EditProfile;
+import com.erudito.main_stay.Classes.Leaderboard;
 import com.erudito.main_stay.Classes.Login;
 import com.erudito.main_stay.Classes.MyBatch;
 import com.erudito.main_stay.Classes.R2Values;
-import com.android.main_stay.R;
 import com.erudito.main_stay.models.LoginModel;
 import com.erudito.main_stay.models.SendFeedbackModel;
 import com.erudito.main_stay.utils.PreferenceHelper;
 import com.erudito.main_stay.utils.Utils;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import es.dmoral.toasty.BuildConfig;
 import es.dmoral.toasty.Toasty;
 
 

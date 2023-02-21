@@ -19,6 +19,6 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context="com.android.main_stay.fragment.BadgesList"
+        tools:context="com.android.main_stay.com.erudito.main_stay.fragment.BadgesList"
         tools:listitem="@layout/badge_fragment_item" />
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

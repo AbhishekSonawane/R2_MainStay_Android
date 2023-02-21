@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.android.main_stay.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkError;
@@ -32,17 +33,15 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.erudito.main_stay.Classes.R2Values;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.erudito.main_stay.BuildConfig;
 import com.erudito.main_stay.Classes.App;
-import com.android.main_stay.R;
+import com.erudito.main_stay.Classes.R2Values;
 import com.erudito.main_stay.adapter.FeedsAdapter;
 import com.erudito.main_stay.models.FeedsModel;
 import com.erudito.main_stay.models.LoginModel;
 import com.erudito.main_stay.utils.PreferenceHelper;
 import com.erudito.main_stay.utils.WebUtil;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,6 +50,7 @@ import org.json.JSONObject;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+import es.dmoral.toasty.BuildConfig;
 import es.dmoral.toasty.Toasty;
 
 /**

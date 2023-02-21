@@ -14,10 +14,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.main_stay.R;
-import com.erudito.main_stay.models.GetQuestionsModel;
-import com.erudito.main_stay.models.LoginModel;
-import com.erudito.main_stay.models.QuizAnswers;
-import com.erudito.main_stay.utils.PreferenceHelper;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkError;
@@ -29,6 +25,10 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.erudito.main_stay.models.GetQuestionsModel;
+import com.erudito.main_stay.models.LoginModel;
+import com.erudito.main_stay.models.QuizAnswers;
+import com.erudito.main_stay.utils.PreferenceHelper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
