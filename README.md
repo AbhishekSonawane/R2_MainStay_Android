@@ -1,2 +1,1 @@
-# R2_MainStay_Android
-Android app for MainStay
+# R2Nexo_Android

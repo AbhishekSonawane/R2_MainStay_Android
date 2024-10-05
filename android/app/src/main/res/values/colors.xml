@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3C445D</color>
+    <color name="colorPrimaryDark">#1A1E2A</color>
+    <color name="colorAccent">#000000</color>
+    <color name="r2color">#00AFEF</color>
+    <color name="placeholdercolor">#C2C4CA</color>
+    <color name="bodytextcolor">#4A4A4A</color>
+    <color name="black">#000000</color>
+    <color name="divider_color">#9e9e9e</color>
+    <color name="gifBlue">#63adc7</color>
+    <color name="gifBluefaint">#049BFA</color>
+
+</resources>

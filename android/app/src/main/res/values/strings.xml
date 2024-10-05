@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">Erudito</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_tab">TabActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="username_hint">Enter your username</string>
+    <string name="username_label">Username</string>
+    <string name="password_hint">Enter your password</string>
+    <string name="password_label">Password</string>
+    <string name="bookmark_added">Bookmark Added successfully</string>
+    <string name="post_liked">Post liked!</string>
+    <string name="like">Post liked successfully</string>
+    <string name="toggle_expand">Read more...</string>
+    <string name="comment_text_empty_msg">Your comment is empty. Please fill it.</string>
+    <string name="reset_password_error">Your current password was entered incorrectly.Please enter it again.</string>
+    <string name="password_error">Passwords do not match.</string>
+    <string name="general">GENERAL</string>
+    <string name="lbl_my_batch">My Batch</string>
+    <string name="lbl_results_achievements">Results &amp; Achievements</string>
+    <string name="lbl_settings">SETTINGS</string>
+    <string name="lbl_edit_personal_details">Edit Personal Details</string>
+    <string name="lbl_about">About</string>
+    <string name="lbl_personal_details">PERSONAL DETAILS</string>
+    <string name="hint_change_password">Change Password</string>
+    <string name="hint_current_password">Current Password</string>
+    <string name="hint_new_password">New Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_splash_screen">Erudito</string>
+    <string name="title_activity_comments">Comments</string>
+    <string name="title_activity_my_batch">MyBatch</string>
+    <string name="title_activity_edit_profile">EditProfile</string>
+    <string name="title_activity_reset_password">ResetPassword</string>
+    <string name="internet_connection_error">Please connect to an active internet connection</string>
+    <string name="no_posts">No Posts For Your Feed! Sorry :(</string>
+    <string name="no_notification">No Notification! Sorry :(</string>
+    <string name="lbl_forgot_password">Forgot Password?</string>
+    <string name="title_activity_bookmarks_list">Bookmarks List</string>
+    <string name="lbl_bookmarks">Bookmarks</string>
+    <string name="no_bookmarks">No Bookmark! Sorry :(</string>
+    <string name="lbl_boost_me">Boost now to achieve higher ranks!</string>
+    <string name="quizzes_and_assignments">Quizzes and Assignments</string>
+    <string name="view_answers">View Answers</string>
+    <string name="submitted">Submitted</string>
+    <string name="reviewing">Reviewing</string>
+    <string name="your_quizzes_are_listed_below">Your quizzes are listed below!</string>
+    <string name="your_assign_are_listed_below">Your assignments are listed below!</string>
+    <string name="your_applications_are_listed_below">Your applications are listed below!</string>
+    <string name="title_activity_take_quiz">TakeQuiz</string>
+    <string name="quizidkey">QuizID</string>
+    <string name="takequizlabel"><u>Take quizzes now!</u></string>
+    <string name="assignmentslabel"><u>Do assignments now!</u></string>
+    <string name="ranklabel"><u>View Leaderboard!</u></string>
+    <string name="applicationslabel"><u>View applications now!</u></string>
+    <string name="title_activity_take_assignment">TakeAssignment</string>
+    <string name="title_activity_view_assignment">ViewAssignment</string>
+    <string name="lbl_logout">Logout</string>
+    <string name="title_activity_application">Application</string>
+    <string name="title_activity_take_application">TakeApplication</string>
+    <string name="title_activity_leaderboard">Leaderboard</string>
+
+    <string name="title_activity_boost_me_gif_fullscreen">BoostMeGifFullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="rauf">Rauf</string>
+    <string name="title_activity_expandable_text_view">ExpandableTextView</string>
+
+</resources>
