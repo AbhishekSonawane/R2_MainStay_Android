@@ -19,7 +19,7 @@ public class R2Values {
 
        // public static String BASE_URL1 = "http://192.168.1.9:1212/";
       //  public static String BASE_URL = "https://3f91-103-35-134-125.in.ngrok.io/";
-        public static String BASE_URL = "http://3.225.180.208:8080/";
+        public static String BASE_URL = "http://13.202.229.238:8000/";
       //  public static String BASE_URL = "https://0570-103-35-134-125.in.ngrok.io/" +
               //  "";
 
