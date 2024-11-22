@@ -39,7 +39,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:background="@drawable/ic_splash_screen"
-        tools:context="com.android.main_stay.com.erudito.main_stay.Classes.SplashScreen">
+        tools:context="com.android.main_stay.com.mainstay.mainstaypeople.Classes.SplashScreen">
         <include layout="@layout/content_splash_screen" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
