@@ -12,33 +12,32 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Erudito"
-        android:gravity="center"
         android:layout_gravity="center"
-        android:textStyle="bold"
-        android:textSize="55dp"
-        android:textColor="#3C445F"
-        android:fontFamily="@font/poppins"
         android:layout_marginTop="100dp"
-        />
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:textColor="#3C445F"
+        android:textSize="55dp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="by"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins"
         android:gravity="center"
         android:textColor="#3C445F"
-        android:textStyle="bold"
-        android:layout_gravity="center"
         android:textSize="32sp"
-        android:fontFamily="@font/poppins"
-        android:layout_marginTop="10dp"
-        />
+        android:textStyle="bold"
+        android:visibility="gone"/>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:gravity="center"
         android:background="@drawable/ic_splash_screen"
         tools:context="com.android.main_stay.com.erudito.main_stay.Classes.SplashScreen">
         <include layout="@layout/content_splash_screen" />

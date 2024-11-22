@@ -527,7 +527,7 @@ public class EditProfile extends AppCompatActivity {
 
                             Picasso.with(getApplicationContext()).cancelRequest(img_background);
                             Picasso.with(getApplicationContext())
-                                    .load(R2Values.Web.BASE_URL + dataobj.getString("student_picture_url"))
+                                    .load(R2Values.Web.BASE_URL + dataobj.getString("company_image"))
                                     //*.placeholder(R.drawable.default_post_image) // optional
                                     //  .error(R.drawable.default_post_image)         // optional*//*
                                     .into(new Target() {
