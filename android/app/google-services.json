@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "783094562596",
-    "project_id": "main-stay",
-    "storage_bucket": "main-stay.appspot.com"
+    "project_number": "1027988801925",
+    "project_id": "mainstay-people",
+    "storage_bucket": "mainstay-people.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:783094562596:android:ce39a8073652ffdd3dfdb1",
+        "mobilesdk_app_id": "1:1027988801925:android:1cdc02829b19610864dcec",
         "android_client_info": {
           "package_name": "com.mainstay.mainstaypeople"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "783094562596-ltm5t2g5f4hp6cbqeckn4s8trg0b02nu.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDjpw8ZbBkV4LtpLioccip-kbZEe_CcmCA"
+          "current_key": "AIzaSyDCXrHeY9rIt90FN2vWKh7Fu_yfaowiYZM"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "783094562596-ltm5t2g5f4hp6cbqeckn4s8trg0b02nu.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
