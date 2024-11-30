@@ -1,8 +1,12 @@
 package com.erudito.mainstaypeople.fragment;
 
+import static androidx.core.content.ContextCompat.getSystemService;
 import static com.erudito.mainstaypeople.Classes.MainFragment.mTabHost;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -20,6 +24,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -108,10 +114,38 @@ public class Dashboard extends Fragment {
         return fragment;
     }
 
+    private ActivityResultLauncher<String> requestPermissionLauncher;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Initialize permission launcher
+        requestPermissionLauncher = registerForActivityResult(
+                new ActivityResultContracts.RequestPermission(),
+                isGranted -> {
+                    if (isGranted) {
+                        // Permission granted
+                        showNotification();
+                    } else {
+                        // Permission denied
+                        // Notify user or fallback gracefully
+                    }
+                }
+        );
 
+        // Check and request permission
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(getActivity(), android.Manifest.permission.POST_NOTIFICATIONS, requestPermissionLauncher)) {
+                requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS);
+            } else {
+                // Permission already granted
+                showNotification();
+            }
+        } else {
+            // For older versions, no need to request POST_NOTIFICATIONS permission
+            showNotification();
+        }
+
+        Pushy.toggleFCM(false,getActivity());
         Pushy.listen(getActivity());
 
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -124,9 +158,27 @@ public class Dashboard extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
+    public static boolean checkSelfPermission(Activity activity, String permission, ActivityResultLauncher<String> permissionLauncher) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // Check if the permission is already granted
+            if (activity.checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED) {
+                return true; // Permission is granted
+            } else {
+                // Request the permission if not granted
+                permissionLauncher.launch(permission);
+                return false;
+            }
+        } else {
+            // Permissions like POST_NOTIFICATIONS are not required on older versions
+            return true; // Assume permission is granted by default
+        }
+    }
+
+    private void showNotification() {
+        
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -283,7 +283,7 @@ public class Login extends AppCompatActivity {
         protected Void doInBackground(Void... params) {
             try {
                 // Register the device for notifications
-                Pushy.toggleFCM(true,getApplicationContext());
+                Pushy.toggleFCM(false,getApplicationContext());
                 String deviceToken = Pushy.register(getApplicationContext());
                 uGoogRegId = deviceToken;
                 Log.d("MyApp", "Pushy device token: " + deviceToken);
