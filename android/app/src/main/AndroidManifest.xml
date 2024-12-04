@@ -28,6 +28,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="false" />
         <!-- Pushy Declarations -->
         <service
             android:name="me.pushy.sdk.services.PushyJobService"
