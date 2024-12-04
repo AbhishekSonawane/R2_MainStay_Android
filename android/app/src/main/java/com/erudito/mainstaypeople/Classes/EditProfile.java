@@ -15,6 +15,7 @@ import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -57,6 +60,8 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import es.dmoral.toasty.Toasty;
 
@@ -202,7 +207,30 @@ public class EditProfile extends AppCompatActivity {
         }
     }
 
+    private static final int PERMISSION_REQUEST_CODE = 100;
+    private void requestPermissions() {
+        List<String> permissions = new ArrayList<>();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            permissions.add(Manifest.permission.READ_MEDIA_IMAGES);
+        } else {
+            permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+        permissions.add(Manifest.permission.CAMERA);
+
+        boolean needToRequest = false;
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                needToRequest = true;
+            }
+        }
+
+        if (needToRequest) {
+            ActivityCompat.requestPermissions(this, permissions.toArray(new String[0]), PERMISSION_REQUEST_CODE);
+        }
+    }
     private void selectImage() {
+        requestPermissions(); // Ensure permissions are requested
+
         final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(EditProfile.this);
         builder.setTitle("Add Photo");
@@ -210,23 +238,36 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int item) {
                 if (options[item].equals("Take Photo")) {
-                    Intent cameraIntent = new
-                            Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    if (ContextCompat.checkSelfPermission(EditProfile.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                        Toast.makeText(EditProfile.this, "Camera permission required", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivityForResult(cameraIntent, PICK_FROM_CAMERA);
                 } else if (options[item].equals("Choose from Gallery")) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        if (ContextCompat.checkSelfPermission(EditProfile.this, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
+                            Toast.makeText(EditProfile.this, "Storage permission required", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    } else {
+                        if (ContextCompat.checkSelfPermission(EditProfile.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                            Toast.makeText(EditProfile.this, "Storage permission required", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
                     Intent intent = new Intent();
                     intent.setType("image/*");
                     intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(Intent.createChooser(intent, "Select Picture"),
-                            SELECT_PICTURE);
+                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
                 } else if (options[item].equals("Cancel")) {
                     dialog.dismiss();
                 }
             }
-
         });
         builder.show();
     }
+
 
     private Bitmap decodeUri(Uri selectedImage) {
         try {
@@ -373,19 +414,8 @@ public class EditProfile extends AppCompatActivity {
     //permission method.
     public void verifyStoragePermissions(Activity activity) {
         // Check if we have read or write permission
-        int writePermission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        int readPermission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE);
 
-        if (writePermission != PackageManager.PERMISSION_GRANTED || readPermission != PackageManager.PERMISSION_GRANTED) {
-            // We don't have permission so prompt the user
-            ActivityCompat.requestPermissions(
-                    activity,
-                    PERMISSIONS_STORAGE,
-                    REQUEST_EXTERNAL_STORAGE
-            );
-        } else {
-            selectImage();
-        }
+        selectImage();
     }
 
     @Override

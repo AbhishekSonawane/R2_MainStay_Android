@@ -118,7 +118,7 @@ public class Feed extends Fragment {
         pd.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
 
 
-        sharedPref = getContext().getApplicationContext().getSharedPreferences("r2", Context.MODE_PRIVATE);
+        sharedPref = getContext().getApplicationContext().getSharedPreferences("MainStay", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean("homescreen_resume", false);
         editor.putBoolean("from_comments", false).apply();
@@ -165,7 +165,7 @@ public class Feed extends Fragment {
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
-        sharedPref = getContext().getSharedPreferences("r2", Context.MODE_PRIVATE);
+        sharedPref = getContext().getSharedPreferences("MainStay", Context.MODE_PRIVATE);
         boolean fromComments = sharedPref.getBoolean("from_comments", false);
         boolean homeResume = sharedPref.getBoolean("homescreen_resume", false);
         boolean fromNotifs = sharedPref.getBoolean("from_notifications", false);

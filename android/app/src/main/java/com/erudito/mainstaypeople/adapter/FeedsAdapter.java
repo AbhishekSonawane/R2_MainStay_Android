@@ -231,7 +231,7 @@ public class FeedsAdapter extends RecyclerView.Adapter<FeedsAdapter.MyViewHolder
         holder.button_toggle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedPref = mContext.getSharedPreferences("r2",Context.MODE_PRIVATE);
+                sharedPref = mContext.getSharedPreferences("MainStay",Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putBoolean("to_comments", true);
                 editor.commit();
@@ -249,7 +249,7 @@ public class FeedsAdapter extends RecyclerView.Adapter<FeedsAdapter.MyViewHolder
         MyViewHolder.post_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedPref = mContext.getSharedPreferences("r2",Context.MODE_PRIVATE);
+                sharedPref = mContext.getSharedPreferences("MainStay",Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putBoolean("to_comments", true);
                 editor.commit();
@@ -267,7 +267,7 @@ public class FeedsAdapter extends RecyclerView.Adapter<FeedsAdapter.MyViewHolder
         holder.post_title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedPref = mContext.getSharedPreferences("r2",Context.MODE_PRIVATE);
+                sharedPref = mContext.getSharedPreferences("MainStay",Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putBoolean("to_comments", true);
                 editor.commit();
@@ -285,7 +285,7 @@ public class FeedsAdapter extends RecyclerView.Adapter<FeedsAdapter.MyViewHolder
         holder.post_created_at.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedPref = mContext.getSharedPreferences("r2",Context.MODE_PRIVATE);
+                sharedPref = mContext.getSharedPreferences("MainStay",Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putBoolean("to_comments", true);
                 editor.commit();
@@ -303,7 +303,7 @@ public class FeedsAdapter extends RecyclerView.Adapter<FeedsAdapter.MyViewHolder
         MyViewHolder.imgcomments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedPref = mContext.getSharedPreferences("r2",Context.MODE_PRIVATE);
+                sharedPref = mContext.getSharedPreferences("MainStay",Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putBoolean("to_comments", true);
                 editor.commit();
@@ -321,7 +321,7 @@ public class FeedsAdapter extends RecyclerView.Adapter<FeedsAdapter.MyViewHolder
         holder.txtcommentscount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedPref = mContext.getSharedPreferences("r2",Context.MODE_PRIVATE);
+                sharedPref = mContext.getSharedPreferences("MainStay",Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putBoolean("to_comments", true);
                 editor.commit();
@@ -340,7 +340,7 @@ public class FeedsAdapter extends RecyclerView.Adapter<FeedsAdapter.MyViewHolder
         holder.post_description.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedPref = mContext.getSharedPreferences("r2",Context.MODE_PRIVATE);
+                sharedPref = mContext.getSharedPreferences("MainStay",Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putBoolean("to_comments", true);
                 editor.commit();

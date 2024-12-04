@@ -9,6 +9,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -58,10 +59,15 @@ import org.json.JSONObject;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 import es.dmoral.toasty.BuildConfig;
 import es.dmoral.toasty.Toasty;
 import me.pushy.sdk.Pushy;
+
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -131,6 +137,7 @@ public class Dashboard extends Fragment {
                     }
                 }
         );
+        requestPermissions();
 
         // Check and request permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -160,6 +167,33 @@ public class Dashboard extends Fragment {
         }
     }
 
+    private static final int PERMISSION_REQUEST_CODE = 100;
+    private static final int GALLERY_REQUEST_CODE = 101;
+    private static final int CAMERA_REQUEST_CODE = 102;
+
+    private void requestPermissions() {
+        List<String> permissions = new ArrayList<>();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            permissions.add(Manifest.permission.READ_MEDIA_IMAGES);
+        } else {
+            permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+        permissions.add(Manifest.permission.CAMERA);
+
+        boolean needToRequest = false;
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(this.getActivity(), permission) != PackageManager.PERMISSION_GRANTED) {
+                needToRequest = true;
+            }
+        }
+
+        if (needToRequest) {
+            ActivityCompat.requestPermissions(this.getActivity(), permissions.toArray(new String[0]), PERMISSION_REQUEST_CODE);
+        }
+    }
+
+
+
     public static boolean checkSelfPermission(Activity activity, String permission, ActivityResultLauncher<String> permissionLauncher) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             // Check if the permission is already granted
@@ -177,7 +211,7 @@ public class Dashboard extends Fragment {
     }
 
     private void showNotification() {
-        
+
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -323,8 +357,8 @@ public class Dashboard extends Fragment {
                     rankText.setText(Html.fromHtml("My Rank<br>" + "<b>" + jsonobj.getString("rank") + "<br>" + "<font color=#00BFFF>" + "<small><u>" + getString(R.string.ranklabel) + "</u></small>" + "</font>"));
 
                     String latestVersion = jsonobj.getString("current_version");
-
-                    if (!BuildConfig.VERSION_NAME.equals(latestVersion)&&!versionCheck) {
+                    String versionName = R2Values.Commons.VERSION_CODE;
+                    if (!versionName.equals(latestVersion)&&!versionCheck) {
                         versionCheck=true;
                         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                         builder.setTitle("New Version Available!");
@@ -336,7 +370,7 @@ public class Dashboard extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //Click Update button action
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.r2.nexo&hl=en")));
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.mainstay.mainstaypeople&hl=en")));
                                 dialog.dismiss();
                             }
                         });
@@ -359,7 +393,6 @@ public class Dashboard extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override

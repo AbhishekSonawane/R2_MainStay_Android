@@ -377,7 +377,7 @@ public class Profile extends Fragment {
 
                     if (jsonobj.getString("status").equals("success")) {
                         mPreferenceHelper.clear();
-                        getActivity().getSharedPreferences("R2", 0).edit().clear().apply();
+                        getActivity().getSharedPreferences("MainStay", 0).edit().clear().apply();
                         Intent intent = new Intent(getActivity(), Login.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);

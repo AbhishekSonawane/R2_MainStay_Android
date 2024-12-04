@@ -7,6 +7,7 @@ package com.erudito.mainstaypeople.Classes;
 public class R2Values {
 
     public static class Commons {
+        public static String VERSION_CODE ="1.0" ;
         public static String TOKEN ="device_token" ;
         public static String EMAIL = "email";
         public static String PASSWORD = "password";

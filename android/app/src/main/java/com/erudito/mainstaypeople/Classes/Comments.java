@@ -76,7 +76,7 @@ public class Comments extends AppCompatActivity {
 
         toolbar.setNavigationIcon(R.drawable.back_arrow);
 
-        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("r2", Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("MainStay", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean("to_comments", false);
         editor.commit();
@@ -89,7 +89,7 @@ public class Comments extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("r2", Context.MODE_PRIVATE);
+                SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("MainStay", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                // mPreferenceHelper.addBoolean("from_comments", true);
                 editor.putBoolean("from_comments", true);
@@ -355,7 +355,7 @@ public class Comments extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Log.d("Nonstop", "holder position in comments" + holderPosition);
-        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("r2", Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("MainStay", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean("from_comments", true);
         editor.putInt("holder_position", holderPosition);
