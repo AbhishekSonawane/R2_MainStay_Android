@@ -311,45 +311,59 @@ public class Feed extends Fragment {
 
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("Nonstop", "response  ---------------" + response);
+                Log.d("Nonstop", "response ---------------" + response);
 
-                if (pd != null && pd.isShowing())
+                // Check if the activity is still valid before dismissing the progress dialog
+                if (getActivity() != null && !getActivity().isFinishing() && pd != null && pd.isShowing()) {
                     pd.dismiss();
+                }
 
                 try {
-
                     JSONObject jsonobj = response.getJSONObject("get_posts");
 
+                    // Check the status of the response
                     if (jsonobj.getString("status").equals("fail")) {
-                        Toasty.error(getActivity(), jsonobj.getString("message"), Toast.LENGTH_SHORT).show();
+                        // Ensure the activity is still valid before showing a Toast
+                        if (getActivity() != null) {
+                            Toasty.error(getActivity(), jsonobj.getString("message"), Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     if (jsonobj.getString("status").equals("success")) {
-
                         JSONArray jarray = jsonobj.getJSONArray("data");
 
                         if (jarray.length() > 0) {
-                            Type type = new TypeToken<ArrayList<FeedsModel>>() {
-                            }.getType();
+                            // Deserialize the JSON array to a list of FeedsModel objects
+                            Type type = new TypeToken<ArrayList<FeedsModel>>() {}.getType();
                             feedsList = new Gson().fromJson(jarray.toString(), type);
                             Log.d("NonStop", "In Homescreen getPosts Size: " + feedsList.size());
                         } else {
-                            Toasty.error(getActivity(), getResources().getString(R.string.no_posts), Toast.LENGTH_SHORT).show();
+                            // Ensure the activity is still valid before showing a Toast
+                            if (getActivity() != null) {
+                                Toasty.error(getActivity(), getResources().getString(R.string.no_posts), Toast.LENGTH_SHORT).show();
+                            }
                         }
 
-                        mAdapter = new FeedsAdapter(feedsList, getActivity());
-                        recyclerView.setLayoutManager(mLayoutManager);
-                        recyclerView.setItemAnimator(new DefaultItemAnimator());
-                        recyclerView.setAdapter(mAdapter);
-                        mAdapter.notifyDataSetChanged();
+                        // Update the RecyclerView only if the activity is valid
+                        if (getActivity() != null) {
+                            mAdapter = new FeedsAdapter(feedsList, getActivity());
+                            recyclerView.setLayoutManager(mLayoutManager);
+                            recyclerView.setItemAnimator(new DefaultItemAnimator());
+                            recyclerView.setAdapter(mAdapter);
+                            mAdapter.notifyDataSetChanged();
+                        }
 
-                        swipeContainer.setRefreshing(false);
+                        // Stop the swipe-to-refresh animation
+                        if (swipeContainer != null) {
+                            swipeContainer.setRefreshing(false);
+                        }
                     }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
+
         }, new Response.ErrorListener() {
 
             @Override

@@ -27,6 +27,7 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.erudito.mainstaypeople.Classes.App;
@@ -142,43 +143,62 @@ public class Notifications extends Fragment {
 
             @Override
             public void onResponse(JSONObject response) {
-
                 Log.d("NonStop", "Notifications Response: " + response);
 
-                if (pd != null && pd.isShowing())
+                // Dismiss ProgressDialog safely
+                if (pd != null && pd.isShowing()) {
                     pd.dismiss();
+                }
 
                 try {
-
                     JSONObject jsonobj = response.getJSONObject("get_notifications");
                     if (jsonobj.getString("status").equals("success")) {
                         jarray = jsonobj.getJSONArray("data");
 
                         String notifcount = jsonobj.getString("unread_count");
+                        Log.d("Nonstop", "Notifications count: " + notifcount);
 
-                        Log.d("Nonstop", "Notifications count" + notifcount);
+                        // Save notification count to shared preferences
                         mPreferenceHelper.addString("notifcount", notifcount);
-                        TextView notifCount = TabActivity.tabLayout.getTabAt(3).getCustomView().findViewById(R.id.txtcount);
-                        notifCount.setText(notifcount);
 
+                        // Ensure the activity and TabLayout are valid before updating the notification count
+                        if (getActivity() != null && !getActivity().isFinishing() && TabActivity.tabLayout != null) {
+                            TabLayout.Tab tab = TabActivity.tabLayout.getTabAt(3);
+                            if (tab != null && tab.getCustomView() != null) {
+                                TextView notifCount = tab.getCustomView().findViewById(R.id.txtcount);
+                                if (notifCount != null) {
+                                    notifCount.setText(notifcount);
+                                }
+                            }
+                        }
+
+                        // Parse and update notification list
                         if (jarray.length() > 0) {
-                            Type type = new TypeToken<ArrayList<NotificationsModel>>() {
-                            }.getType();
+                            Type type = new TypeToken<ArrayList<NotificationsModel>>() {}.getType();
                             notificationList = new Gson().fromJson(jarray.toString(), type);
                             Log.d("NonStop", "In Homescreen notification Size: " + notificationList.size());
                         }
 
-                        mAdapter = new NotificationAdapter(notificationList, getActivity());
-                        recyclerView.setLayoutManager(mLayoutManager);
-                        recyclerView.setItemAnimator(new DefaultItemAnimator());
-                        recyclerView.setAdapter(mAdapter);
-                        mAdapter.notifyDataSetChanged();
+                        // Update RecyclerView safely
+                        if (getActivity() != null && !getActivity().isFinishing()) {
+                            if (mAdapter == null) {
+                                mAdapter = new NotificationAdapter(notificationList, getActivity());
+                                recyclerView.setLayoutManager(mLayoutManager);
+                                recyclerView.setItemAnimator(new DefaultItemAnimator());
+                                recyclerView.setAdapter(mAdapter);
+                            } else {
+                                mAdapter.updateData(notificationList); // Create an `updateData()` method in your adapter for efficient updates
+                            }
+                            mAdapter.notifyDataSetChanged();
+                        }
 
-                        swipeContainer.setRefreshing(false);
-
+                        // Stop the swipe refresh animation safely
+                        if (swipeContainer != null) {
+                            swipeContainer.setRefreshing(false);
+                        }
                     }
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Log.e("NonStop", "Error parsing notifications response: " + e.getMessage(), e);
                 }
             }
         }, new Response.ErrorListener() {

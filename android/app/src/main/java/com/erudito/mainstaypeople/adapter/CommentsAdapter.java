@@ -2,10 +2,12 @@ package com.erudito.mainstaypeople.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -309,8 +312,19 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.MyView
             @Override
             public void onClick(View v) {
                 //       mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=Fm2S4fvL8J0")));
-                Intent intent = YouTubeStandalonePlayer.createVideoIntent((Activity) mContext, "AIzaSyASo9rv7zaO2cRpz0l37rQIQeAzrBloj8w", videoId);
-                mContext.startActivity(intent);
+                try {
+                    Intent intent = YouTubeStandalonePlayer.createVideoIntent((Activity) mContext, "AIzaSyASo9rv7zaO2cRpz0l37rQIQeAzrBloj8w", videoId);
+                    if (intent.resolveActivity(mContext.getPackageManager()) != null) {
+                        mContext.startActivity(intent);
+                    } else {
+                        Toast.makeText(mContext, "Something is wrong with the youtube url.", Toast.LENGTH_SHORT).show();
+                        throw new ActivityNotFoundException();
+                    }
+                } catch (ActivityNotFoundException e) {
+                    //Toast.makeText(mContext, "YouTube app is not installed. Opening in browser...", Toast.LENGTH_SHORT).show();
+                    Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + videoId));
+                    mContext.startActivity(webIntent);
+                }
             }
         });
 

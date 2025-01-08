@@ -48,6 +48,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import es.dmoral.toasty.Toasty;
 
@@ -83,6 +84,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public NotificationAdapter(ArrayList<NotificationsModel> NotificationsList, Context mContext) {
         this.NotificationsList = NotificationsList;
         NotificationAdapter.mContext = mContext;
+    }
+
+    public void updateData(List<NotificationsModel> newNotifications) {
+        this.NotificationsList.clear();
+        this.NotificationsList.addAll(newNotifications);
+        notifyDataSetChanged();
     }
 
     @Override
