@@ -203,6 +203,8 @@ public class Login extends AppCompatActivity {
                         mPreferenceHelper.addString(R2Values.Commons.PASSWORD, txtpassword.getText().toString().trim());
                         mPreferenceHelper.addString(R2Values.Commons.STUDENT_ID, dataobj.getString("student_id"));
 
+                        new RegisterForPushNotificationsAsync().execute();
+
                         Intent intent = new Intent(Login.this, TabActivity.class);
                         startActivity(intent);
                         finish();
@@ -308,8 +310,6 @@ public class Login extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.d("NonStop", "In Login onResume");
-
-        new RegisterForPushNotificationsAsync().execute();
     }
 
 
