@@ -10,31 +10,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Erudito"
-        android:textSize="40dp"
-        android:textColor="#3C445F"
-        android:textStyle="bold"
-        android:fontFamily="@font/poppins"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="by"
-        android:textSize="25dp"
-        android:textColor="#3C445F"
-        android:textStyle="bold"
-        android:fontFamily="@font/poppins"
-        />
 
-
-
-        <ImageView
+    <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:src="@drawable/ic_login_screen" />
 
@@ -153,7 +133,9 @@
         android:paddingLeft="3dp"
         android:paddingRight="11dp"
         android:textColor="@android:color/black"
-        android:textSize="12dp" />
+        android:textSize="12dp"
+        android:autoLink="web"
+        android:linksClickable="true" />
 
 
 </LinearLayout>

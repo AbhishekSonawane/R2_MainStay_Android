@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.main_stay">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -9,9 +12,14 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"
+        android:required="false" />
+    <uses-permission android:name="android.permission.ACTION_IMAGE_CAPTURE"/>
 
     <application
-        android:name="com.erudito.main_stay.Classes.App"
+        android:name="com.erudito.mainstaypeople.Classes.App"
         android:allowBackup="true"
         android:icon="@drawable/ic_app_icon"
         android:label="@string/app_name"
@@ -20,13 +28,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="false" />
         <!-- Pushy Declarations -->
-
+        <service
+            android:name="me.pushy.sdk.services.PushyJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="false" />
+        <service
+            android:name="me.pushy.sdk.services.PushyFirebaseService"
+            android:exported="false"
+            android:stopWithTask="false">
+            <intent-filter android:priority="100">
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
         <!-- Pushy Notification Receiver -->
         <!-- Incoming push notifications will invoke the following BroadcastReceiver -->
         <receiver
-            android:name="com.erudito.main_stay.receiver.PushReceiver"
+            android:name="com.erudito.mainstaypeople.receiver.PushReceiver"
             android:exported="false">
             <intent-filter>
 
@@ -64,17 +86,17 @@
         <!-- End Pushy Declarations -->
 
         <activity
-            android:name="com.erudito.main_stay.Classes.Login"
+            android:name="com.erudito.mainstaypeople.Classes.Login"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.erudito.main_stay.Classes.TabActivity"
+            android:name="com.erudito.mainstaypeople.Classes.TabActivity"
             android:label="@string/title_activity_tab"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.erudito.main_stay.Classes.SplashScreen"
+            android:name="com.erudito.mainstaypeople.Classes.SplashScreen"
             android:label="@string/title_activity_splash_screen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Transparent"
@@ -86,82 +108,82 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.erudito.main_stay.Classes.Comments"
+            android:name="com.erudito.mainstaypeople.Classes.Comments"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.erudito.main_stay.Classes.MyBatch"
+            android:name="com.erudito.mainstaypeople.Classes.MyBatch"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.erudito.main_stay.Classes.EditProfile"
+            android:name="com.erudito.mainstaypeople.Classes.EditProfile"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.erudito.main_stay.Classes.ResetPassword"
+            android:name="com.erudito.mainstaypeople.Classes.ResetPassword"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.erudito.main_stay.utils.FullImageActivity"
+            android:name="com.erudito.mainstaypeople.utils.FullImageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.erudito.main_stay.Classes.BookmarksList"
+            android:name="com.erudito.mainstaypeople.Classes.BookmarksList"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.erudito.main_stay.Classes.TakeQuiz"
+            android:name="com.erudito.mainstaypeople.Classes.TakeQuiz"
             android:label="@string/title_activity_take_quiz"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.erudito.main_stay.Classes.ViewAnswers"
+            android:name="com.erudito.mainstaypeople.Classes.ViewAnswers"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.erudito.main_stay.Classes.TakeAssignment"
+            android:name="com.erudito.mainstaypeople.Classes.TakeAssignment"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.erudito.main_stay.Classes.ViewAssignment"
+            android:name="com.erudito.mainstaypeople.Classes.ViewAssignment"
             android:label="@string/title_activity_view_assignment"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.erudito.main_stay.Classes.Application"
+            android:name="com.erudito.mainstaypeople.Classes.Application"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.erudito.main_stay.Classes.TakeApplication"
+            android:name="com.erudito.mainstaypeople.Classes.TakeApplication"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name="com.erudito.main_stay.Classes.Leaderboard"
+            android:name="com.erudito.mainstaypeople.Classes.Leaderboard"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.erudito.main_stay.Classes.BoostMeGifFullscreenActivity"
+            android:name="com.erudito.mainstaypeople.Classes.BoostMeGifFullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_boost_me_gif_fullscreen"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
-            android:name="com.erudito.main_stay.Classes.BoostMeGifActivity"
+            android:name="com.erudito.mainstaypeople.Classes.BoostMeGifActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.erudito.main_stay.Classes.BoostMeActivity"
+            android:name="com.erudito.mainstaypeople.Classes.BoostMeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
 

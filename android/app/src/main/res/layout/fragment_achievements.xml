@@ -9,7 +9,7 @@
     android:background="@drawable/leaderboard_background"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.android.main_stay.com.erudito.main_stay.fragment.Dashboard">
+    tools:context="com.android.main_stay.com.mainstay.mainstaypeople.fragment.Dashboard">
 
     <RelativeLayout
         android:id="@+id/mainrelay"

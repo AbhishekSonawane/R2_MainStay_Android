@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.android.main_stay.com.erudito.main_stay.Classes.MyBatch"
+    tools:context="com.android.main_stay.com.mainstay.mainstaypeople.Classes.MyBatch"
     tools:showIn="@layout/activity_my_batch">
 
     <TextView
