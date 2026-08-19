@@ -173,9 +173,7 @@ public class Dashboard extends Fragment {
 
     private void requestPermissions() {
         List<String> permissions = new ArrayList<>();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            permissions.add(Manifest.permission.READ_MEDIA_IMAGES);
-        } else {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
             permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
         }
         permissions.add(Manifest.permission.CAMERA);

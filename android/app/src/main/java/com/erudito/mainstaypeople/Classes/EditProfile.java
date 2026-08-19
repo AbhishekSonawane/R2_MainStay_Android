@@ -210,9 +210,7 @@ public class EditProfile extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CODE = 100;
     private void requestPermissions() {
         List<String> permissions = new ArrayList<>();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            permissions.add(Manifest.permission.READ_MEDIA_IMAGES);
-        } else {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
             permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
         }
         permissions.add(Manifest.permission.CAMERA);
@@ -245,12 +243,7 @@ public class EditProfile extends AppCompatActivity {
                     Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivityForResult(cameraIntent, PICK_FROM_CAMERA);
                 } else if (options[item].equals("Choose from Gallery")) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                        if (ContextCompat.checkSelfPermission(EditProfile.this, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
-                            Toast.makeText(EditProfile.this, "Storage permission required", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                    } else {
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
                         if (ContextCompat.checkSelfPermission(EditProfile.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                             Toast.makeText(EditProfile.this, "Storage permission required", Toast.LENGTH_SHORT).show();
                             return;

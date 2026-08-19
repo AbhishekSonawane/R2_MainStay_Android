@@ -8,8 +8,8 @@ android {
     defaultConfig {
         applicationId "com.mainstay.mainstaypeople"
         minSdkVersion 26
-        targetSdkVersion 35
-        versionCode 12
+        targetSdkVersion 36
+        versionCode 13
         versionName "1.2"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         multiDexEnabled true
@@ -17,7 +17,7 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("C:/Users/Admin/Documents/projects/Mainstay/R2_MainStay_Android/R2nexo/R2nexo.jks")
+            storeFile file('R2nexo.jks')
             storePassword 'R2Nexo@new123'
             keyAlias 'r2nexo'
             keyPassword 'R2Nexo@new123'
@@ -30,9 +30,6 @@ android {
             signingConfig signingConfigs.release
             // proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            firebaseCrashlytics {
-                mappingFileUploadEnabled false
-            }
         }
     }
 
